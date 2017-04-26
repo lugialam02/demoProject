@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "SecondViewController.h"
 
 @interface ViewController ()
 
@@ -19,27 +20,29 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.title = @"User";
     
-    //num = 7;
-    
-    //self.navigationItem.rightBarButtonItem = num;
-}
 
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator{
-    
-    double height = [[UIScreen mainScreen] bounds].size.height;
-    
-    self.lblResult.text = [NSString stringWithFormat:@"%f", height];
+- (IBAction)didTapPushButton:(id)sender {
+    [self performSegueWithIdentifier:@"secondViewController" sender:self];
 }
 
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"secondViewController"]) {
+        SecondViewController *secondVC =  [segue destinationViewController];
+        secondVC.number = 2;
+    }
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
     
     double height = [[UIScreen mainScreen] bounds].size.height;
+    
     self.lblResult.text = [NSString stringWithFormat:@"%f", height];
 }
 
