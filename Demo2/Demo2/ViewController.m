@@ -35,7 +35,7 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"secondViewController"]) {
         SecondViewController *secondVC =  [segue destinationViewController];
-        secondVC.number = 2;
+        secondVC.number = 5;
     }
 }
 
